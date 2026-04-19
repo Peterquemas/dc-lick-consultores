@@ -56,7 +56,11 @@
     'a.btn-outline',
     'a.btn-white',
     'a.btn-teal',
-    'a.nav-cta'
+    'a.nav-cta',
+    /* Cabecera: Inicio, Quiénes somos, Servicios, submenú y barra superior */
+    '#main-header nav a',
+    '#mobile-menu a',
+    '#topbar a'
   ].join(',');
 
   document.addEventListener('click', function (e) {
