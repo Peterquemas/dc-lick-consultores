@@ -80,6 +80,59 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:70px 40px 32px
 </style>
 </head>
 <body>
+<div id="dclick-gate"><style>
+#dclick-gate{position:fixed;inset:0;z-index:99999;background:#0f2b2a;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',system-ui,sans-serif;padding:1rem}
+#dclick-card{background:#1a3f3d;border:1px solid rgba(200,150,62,.25);border-radius:12px;padding:2.5rem 2rem;width:100%;max-width:380px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+#dclick-card svg{display:block;margin:0 auto 1.5rem;width:220px;height:auto}
+#dclick-card h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:400;color:#e8f5f4;letter-spacing:.05em;margin-bottom:.4rem}
+#dclick-card p.sub{font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:1.8rem;letter-spacing:.08em;text-transform:uppercase}
+#dclick-inp{width:100%;padding:.75rem 1rem;background:#0f2b2a;border:1px solid rgba(0,169,157,.4);border-radius:6px;color:#e8f5f4;font-family:'DM Sans',system-ui,sans-serif;font-size:.95rem;outline:none;margin-bottom:1rem;transition:border-color .2s}
+#dclick-inp:focus{border-color:#00a99d}
+#dclick-btn{width:100%;padding:.75rem;background:#00a99d;border:none;border-radius:6px;color:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:.95rem;font-weight:500;letter-spacing:.04em;cursor:pointer;transition:background .2s}
+#dclick-btn:hover{background:#007f75}
+#dclick-err{display:none;margin-top:.9rem;color:#e05252;font-size:.82rem;letter-spacing:.02em}
+</style>
+<div id="dclick-card">
+<svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<text x="48" y="145" font-family="Georgia,serif" font-size="112" font-weight="700" fill="#C8963E">D</text>
+<text x="106" y="145" font-family="Georgia,serif" font-size="112" font-weight="400" fill="#ffffff">C</text>
+<line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+<text x="204" y="108" font-family="Georgia,serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text>
+<text x="202" y="158" font-family="Georgia,serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text>
+<text x="204" y="190" font-family="Arial,sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.45)" letter-spacing="5">a  un  click</text>
+<g transform="translate(350,174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.8"/></g>
+</svg>
+<h1>Acceso restringido</h1>
+<p class="sub">Introduce la contraseña para continuar</p>
+<input id="dclick-inp" type="password" placeholder="Contraseña" autocomplete="current-password" autofocus/>
+<button id="dclick-btn">Entrar</button>
+<p id="dclick-err">Contraseña incorrecta. Inténtalo de nuevo.</p>
+</div></div>
+<script>
+(function(){
+  if(sessionStorage.getItem('dclick_auth')==='1'){document.getElementById('dclick-gate').remove();return;}
+  var btn=document.getElementById('dclick-btn');
+  var inp=document.getElementById('dclick-inp');
+  var err=document.getElementById('dclick-err');
+  async function check(){
+    var pw=inp.value;
+    if(!pw)return;
+    var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw));
+    var hex=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    if(hex=== + HASH + ){
+      sessionStorage.setItem('dclick_auth','1');
+      document.getElementById('dclick-gate').remove();
+    }else{
+      err.style.display='block';
+      inp.value='';
+      inp.focus();
+    }
+  }
+  btn.addEventListener('click',check);
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+})();
+</script>
+
 <div id="topbar"><div class="topbar-contact"><a href="tel:+34653919871">+34 653 919 871</a><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></div><div class="topbar-social"><a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
 <header id="main-header"><div class="header-inner"><a href="../"><svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:160px;width:auto;"><text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text><text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text><line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text><text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text><text x="204" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.45)" letter-spacing="5">a  un  click</text><g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.8"/></g></svg></a>
 <nav><ul><li><a href="../">Inicio</a></li><li><a href="../quienes-somos/">Quiénes somos</a></li><li class="has-sub"><a href="../servicios/" class="active">Servicios</a><ul class="sub-menu"><li><a href="../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li><li><a href="../servicios/subvenciones/">Subvenciones</a></li><li><a href="../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li></ul></li><li><a href="../contacto/" class="nav-cta">Contactar</a></li></ul></nav>
