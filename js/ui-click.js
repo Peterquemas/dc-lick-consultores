@@ -60,7 +60,8 @@
     /* Cabecera: Inicio, Quiénes somos, Servicios, submenú y barra superior */
     '#main-header nav a',
     '#mobile-menu a',
-    '#topbar a'
+    '#topbar a',
+    '#clientes a.cliente-item'
   ].join(',');
 
   document.addEventListener('click', function (e) {
