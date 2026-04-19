@@ -1332,8 +1332,7 @@
 <section id="hero" aria-label="Cabecera principal">
   <div id="hero-fallback"></div>
   <video id="hero-video" autoplay muted loop playsinline preload="auto"
-    aria-hidden="true"
-    poster="MANO1.png">
+    aria-hidden="true">
     <source src="WHITEHANDLATERAL.mp4" type="video/mp4"/>
   </video>
   <div class="hero-overlay"></div>
@@ -1791,14 +1790,28 @@
   </div>
 </div>
 
+<script src="js/ui-click.js"></script>
 <script>
   // ─── VIDEO HERO ───
   const video = document.getElementById('hero-video');
   const fallback = document.getElementById('hero-fallback');
 
-  // Video sin audio - simplemente visible
-  video.classList.add('visible');
-  fallback.classList.add('hidden');
+  // Sin poster: evita el destello de una imagen fija. El gradiente (#hero-fallback)
+  // permanece hasta que el vídeo tiene el primer fotograma listo.
+  let heroVideoRevealed = false;
+  function revealHeroVideo() {
+    if (heroVideoRevealed) return;
+    heroVideoRevealed = true;
+    video.classList.add('visible');
+    fallback.classList.add('hidden');
+  }
+  if (video.readyState >= 2) {
+    revealHeroVideo();
+  } else {
+    video.addEventListener('loadeddata', revealHeroVideo, { once: true });
+    video.addEventListener('playing', revealHeroVideo, { once: true });
+    video.addEventListener('error', () => {}, { once: true });
+  }
 
   // ─── SCROLL REVEAL ───
   const revealObs = new IntersectionObserver((entries) => {
