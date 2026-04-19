@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Consultoría de <em>Empresas</em> | DClick Consultores</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#00a99d;--teal-dark:#007f75;--teal-deeper:#005f58;--teal-mid:#b3e8e5;--dark:#0f2b2a;--bg-light:#f4fbfa;--bg-mid:#e8f5f4;--white:#ffffff;--text-dark:#0f2b2a;--text-mid:#3a5250;--text-light:#6a8a88;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--sans);color:var(--text-dark);background:var(--white);overflow-x:hidden}
+#topbar{background:var(--teal-deeper);font-size:15px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:rgba(255,255,255,0.85);text-decoration:none}#topbar a:hover{color:#fff}
+.topbar-contact{display:flex;gap:28px}.topbar-social{display:flex;gap:10px}
+.topbar-social a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,0.35)}
+.topbar-social svg{width:14px;height:14px;fill:white}
+#main-header{position:sticky;top:0;z-index:1000;background:rgba(0,95,88,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.1)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:130px}
+nav ul{list-style:none;display:flex;gap:4px}
+nav ul li a{color:rgba(255,255,255,0.9);text-decoration:none;font-size:17px;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;padding:10px 18px;border-radius:4px;transition:all 0.2s;position:relative}
+nav ul li a:hover,nav ul li a.active{color:#fff;background:rgba(255,255,255,0.1)}
+.sub-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--teal-deeper);border:1px solid rgba(255,255,255,0.15);min-width:260px;flex-direction:column;border-radius:6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+nav ul li.has-sub{position:relative}nav ul li.has-sub:hover .sub-menu{display:flex}
+.sub-menu li a{display:block;padding:14px 22px;font-size:16px}
+.nav-cta{background:var(--teal-mid)!important;color:var(--teal-deeper)!important;font-weight:700!important;padding:12px 26px!important;border-radius:4px!important}
+.mobile-toggle{display:none;cursor:pointer;flex-direction:column;gap:5px}
+.mobile-toggle span{display:block;width:26px;height:2px;background:#fff}
+.page-hero{background:var(--dark);padding:100px 48px 80px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--teal-deeper),var(--dark));opacity:0.8}
+.page-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.page-label{font-size:14px;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:16px;font-weight:600}
+.page-title{font-family:var(--serif);font-size:clamp(38px,5vw,64px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:20px}
+.page-title em{font-style:italic;color:var(--teal-mid)}
+.page-subtitle{font-size:18px;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.7}
+.content-wrap{max-width:1200px;margin:0 auto;padding:90px 48px}
+.content-grid{display:grid;grid-template-columns:2fr 1fr;gap:80px;align-items:start}
+.main-content h2{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--text-dark);margin-bottom:20px;line-height:1.2}
+.main-content h2 em{font-style:italic;color:var(--teal)}
+.main-content p{font-size:17px;line-height:1.8;color:var(--text-mid);font-weight:300;margin-bottom:20px}
+.step-list{list-style:none;margin:32px 0}
+.step-list li{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--bg-mid)}
+.step-list li:first-child{border-top:1px solid var(--bg-mid)}
+.step-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--teal);flex-shrink:0;width:40px;line-height:1}
+.step-content h4{font-size:17px;font-weight:600;color:var(--text-dark);margin-bottom:6px}
+.step-content p{font-size:15px;color:var(--text-mid);font-weight:300;line-height:1.6;margin:0}
+.sidebar{position:sticky;top:160px}
+.sidebar-card{background:var(--bg-light);padding:36px;border-radius:8px;margin-bottom:24px;border:1px solid var(--bg-mid)}
+.sidebar-card h4{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:16px;color:var(--text-dark)}
+.sidebar-card p{font-size:15px;color:var(--text-mid);line-height:1.7;font-weight:300;margin-bottom:20px}
+.btn-teal{background:var(--teal);color:#fff;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;border-radius:4px;transition:all 0.2s;display:block;text-align:center}
+.btn-teal:hover{background:var(--teal-dark)}
+.sidebar-links h5{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;font-weight:600}
+.sidebar-links ul{list-style:none}
+.sidebar-links ul li{margin-bottom:10px}
+.sidebar-links ul li a{font-size:15px;color:var(--text-mid);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:8px}
+.sidebar-links ul li a:hover{color:var(--teal)}
+.sidebar-links ul li a::before{content:'→';color:var(--teal);font-size:13px}
+.cta-strip{background:var(--teal);padding:80px 48px;text-align:center}
+.cta-strip h2{font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:300;color:#fff;margin-bottom:16px}
+.cta-strip p{font-size:18px;color:rgba(255,255,255,0.85);margin-bottom:36px;font-weight:300}
+.btn-white{background:#fff;color:var(--teal-deeper);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;padding:16px 36px;border-radius:4px;transition:all 0.2s;display:inline-block}
+.btn-white:hover{background:var(--teal-mid);transform:translateY(-2px)}
+footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:70px 40px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(0,169,157,0.2);margin-bottom:32px}
+.footer-brand p{font-size:15px;line-height:1.75;font-weight:300;max-width:260px;margin-top:16px}
+.footer-col h5{font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:18px;font-weight:600}
+.footer-col ul{list-style:none}.footer-col ul li{margin-bottom:12px}
+.footer-col ul li a,.footer-contact a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:15px;font-weight:300;transition:color 0.2s}
+.footer-col ul li a:hover,.footer-contact a:hover{color:var(--teal-mid)}
+.footer-contact p{font-size:15px;font-weight:300;line-height:2}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:14px;color:rgba(255,255,255,0.3)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,169,157,0.3);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s}
+.footer-social a:hover{border-color:var(--teal);color:var(--teal-mid)}
+.footer-social svg{width:15px;height:15px;fill:currentColor}
+#mobile-menu{display:none;position:fixed;inset:0;z-index:1100;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px}
+#mobile-menu.open{display:flex}
+#mobile-menu a{font-family:var(--serif);font-size:32px;font-weight:300;color:#fff;text-decoration:none}
+.mobile-close{position:absolute;top:24px;right:32px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none}
+@media(max-width:900px){#topbar{display:none}.content-grid{grid-template-columns:1fr}.sidebar{position:static}.footer-top{grid-template-columns:1fr 1fr}nav{display:none}.mobile-toggle{display:flex}.content-wrap{padding:60px 24px}}
+</style>
+</head>
+<body>
+<div id="topbar"><div class="topbar-contact"><a href="tel:+34653919871">+34 653 919 871</a><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></div><div class="topbar-social"><a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+<header id="main-header"><div class="header-inner"><a href="../../"><svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:160px;width:auto;"><text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text><text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text><line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text><text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text><text x="204" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.45)" letter-spacing="5">a  un  click</text><g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.8"/></g></svg></a>
+<nav><ul><li><a href="../../">Inicio</a></li><li><a href="../../quienes-somos/">Quiénes somos</a></li><li class="has-sub"><a href="../../servicios/" class="active">Servicios</a><ul class="sub-menu"><li><a href="../../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li><li><a href="../../servicios/subvenciones/">Subvenciones</a></li><li><a href="../../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li></ul></li><li><a href="../../contacto/" class="nav-cta">Contactar</a></li></ul></nav>
+<button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button></div></header>
+<div id="mobile-menu"><button class="mobile-close" id="mobileClose">✕</button><a href="../../">Inicio</a><a href="../../quienes-somos/">Quiénes somos</a><a href="../../servicios/">Servicios</a><a href="../../contacto/" style="color:var(--teal-mid)">Contactar →</a></div>
+
+<section class="page-hero"><div class="page-hero-inner"><p class="page-label">Servicios</p><h1 class="page-title">Consultoría de <em>Empresas</em></h1><p class="page-subtitle">Te ayudamos a redefinir tu negocio, identificar oportunidades de crecimiento y diseñar estrategias que funcionen.</p></div></section>
+
+<div class="content-wrap"><div class="content-grid"><div class="main-content">
+<h2>Redefinimos tu negocio para hacerlo más <em>competitivo</em></h2>
+<p>En el competitivo mundo de los negocios, es esencial adaptarse y evolucionar para sobresalir. Nos especializamos en redefinir tu visión y optimizar tus operaciones.</p>
+<p>Trabajamos codo a codo contigo para comprender a fondo tu negocio, identificar áreas de mejora y diseñar estrategias personalizadas que impulsen tu crecimiento.</p>
+<ul class="step-list">
+<li><div class="step-num">01</div><div class="step-content"><h4>Diagnóstico empresarial</h4><p>Analizamos en profundidad tu empresa: procesos, estructura, mercado y competencia para identificar oportunidades de mejora.</p></div></li>
+<li><div class="step-num">02</div><div class="step-content"><h4>Estrategia personalizada</h4><p>Diseñamos un plan de acción a medida, adaptado a tu realidad y objetivos, con métricas claras de seguimiento.</p></div></li>
+<li><div class="step-num">03</div><div class="step-content"><h4>Implementación y acompañamiento</h4><p>Te acompañamos durante todo el proceso de implementación, resolviendo obstáculos y ajustando el rumbo cuando sea necesario.</p></div></li>
+<li><div class="step-num">04</div><div class="step-content"><h4>Internacionalización</h4><p>Si buscas expandirte, te asesoramos sobre cómo internacionalizar tus productos o servicios con garantías de éxito.</p></div></li>
+<li><div class="step-num">05</div><div class="step-content"><h4>Evaluación de resultados</h4><p>Medimos el impacto de las acciones implementadas y ajustamos la estrategia para maximizar los resultados.</p></div></li>
+</ul>
+</div>
+<div class="sidebar">
+<div class="sidebar-card"><h4>¿Tu empresa necesita un impulso?</h4><p>Cuéntanos tu situación y diseñamos juntos la hoja de ruta para llevarla al siguiente nivel.</p><a href="../../contacto/" class="btn-teal">Hablemos hoy</a></div>
+<div class="sidebar-links"><h5>Otros servicios</h5><ul><li><a href="../../servicios/subvenciones/">Ayudas y Subvenciones</a></li><li><a href="../../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li></ul></div>
+</div></div></div>
+
+<div class="cta-strip"><h2>¿Te interesa este servicio?</h2><p>Cuéntanos tu caso y estudiamos cómo podemos ayudarte.</p><a href="../../contacto/" class="btn-white">Solicitar información</a></div>
+
+<footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto;display:block;"><text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text><text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text><line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text><text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text><g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.6"/></g></svg><p>Especialistas en gestión de subvenciones y ayudas para pymes en las Islas Canarias.</p></div><div class="footer-col"><h5>Servicios</h5><ul><li><a href="../../servicios/subvenciones/">Ayudas y Subvenciones</a></li><li><a href="../../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li><li><a href="../../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li></ul></div><div class="footer-col"><h5>Empresa</h5><ul><li><a href="../../">Inicio</a></li><li><a href="../../quienes-somos/">Quiénes somos</a></li><li><a href="../../contacto/">Contacto</a></li><li><a href="../../politica-de-privacidad/">Política de privacidad</a></li></ul></div><div class="footer-col footer-contact"><h5>Contacto</h5><p><a href="tel:+34653919871">+34 653 919 871</a><br/><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></p><div class="footer-social" style="margin-top:20px;"><a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div></div><div class="footer-bottom"><p>© 2025 DClick Consultores. Todos los derechos reservados.</p><p>Hecho con ♦ en Las Palmas de Gran Canaria</p></div></div></footer>
+<script>document.getElementById('mobileToggle').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.add('open');document.body.style.overflow='hidden'});document.getElementById('mobileClose').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow=''});</script>
+</body></html>

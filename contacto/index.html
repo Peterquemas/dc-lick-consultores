@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contacto | DClick Consultores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C8963E;--teal:#00a99d;--teal-dark:#007f75;--teal-deeper:#005f58;--teal-light:#e6f7f6;--teal-mid:#b3e8e5;--dark:#0f2b2a;--bg-light:#f4fbfa;--bg-mid:#e8f5f4;--white:#ffffff;--text-dark:#0f2b2a;--text-mid:#3a5250;--text-light:#6a8a88;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}body{font-family:var(--sans);color:var(--text-dark);background:var(--white);overflow-x:hidden}
+#topbar{background:var(--teal-deeper);color:rgba(255,255,255,0.85);font-size:15px;padding:10px 40px;display:flex;justify-content:space-between;align-items:center}
+#topbar a{color:rgba(255,255,255,0.85);text-decoration:none}#topbar a:hover{color:#fff}
+.topbar-contact{display:flex;gap:28px}.topbar-social{display:flex;gap:10px}
+.topbar-social a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,0.35)}
+.topbar-social svg{width:14px;height:14px;fill:white}
+#main-header{position:sticky;top:0;z-index:1000;background:rgba(0,95,88,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.1)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:130px}
+nav ul{list-style:none;display:flex;gap:4px}
+nav ul li a{color:rgba(255,255,255,0.9);text-decoration:none;font-size:17px;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;padding:10px 18px;border-radius:4px;transition:all 0.2s;position:relative}
+nav ul li a:hover,nav ul li a.active{color:#fff;background:rgba(255,255,255,0.1)}
+.sub-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--teal-deeper);border:1px solid rgba(255,255,255,0.15);min-width:260px;flex-direction:column;border-radius:6px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.2)}
+nav ul li.has-sub{position:relative}nav ul li.has-sub:hover .sub-menu{display:flex}
+.sub-menu li a{display:block;padding:14px 22px;font-size:16px}
+.nav-cta{background:var(--teal-mid)!important;color:var(--teal-deeper)!important;font-weight:700!important;padding:12px 26px!important;border-radius:4px!important}
+.mobile-toggle{display:none;cursor:pointer;flex-direction:column;gap:5px}
+.mobile-toggle span{display:block;width:26px;height:2px;background:#fff}
+.page-hero{background:var(--dark);padding:100px 48px 80px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--teal-deeper),var(--dark));opacity:0.8}
+.page-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.page-label{font-size:14px;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:16px;font-weight:600}
+.page-title{font-family:var(--serif);font-size:clamp(42px,5vw,68px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:20px}
+.page-title em{font-style:italic;color:var(--teal-mid)}
+.page-subtitle{font-size:18px;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.7}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1200px;margin:0 auto;padding:90px 48px}
+.contact-info h2{font-family:var(--serif);font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--text-dark);margin-bottom:24px}
+.contact-info h2 em{font-style:italic;color:var(--teal)}
+.contact-info p{font-size:17px;line-height:1.8;color:var(--text-mid);font-weight:300;margin-bottom:32px}
+.contact-details{list-style:none}
+.contact-details li{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--bg-mid);font-size:16px;color:var(--text-mid)}
+.contact-details li:first-child{border-top:1px solid var(--bg-mid)}
+.contact-icon{width:44px;height:44px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal)}
+.contact-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+.contact-detail-text strong{display:block;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:4px;font-weight:600}
+.contact-detail-text a{color:var(--text-mid);text-decoration:none;font-size:17px}
+.contact-detail-text a:hover{color:var(--teal)}
+.contact-hours{background:var(--bg-light);padding:20px 24px;border-radius:6px;margin-top:32px;font-size:15px;color:var(--text-mid)}
+.contact-hours strong{color:var(--teal-deeper);display:block;margin-bottom:6px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase}
+.contact-form-wrap{background:var(--bg-light);padding:48px;border-radius:8px}
+.contact-form-wrap h3{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--text-dark);margin-bottom:8px}
+.contact-form-wrap p{font-size:15px;color:var(--text-light);margin-bottom:32px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-mid);margin-bottom:8px;font-weight:600}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 18px;border:1.5px solid var(--bg-mid);border-radius:4px;font-size:16px;font-family:var(--sans);color:var(--text-dark);background:var(--white);transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{height:140px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{background:var(--teal);color:#fff;border:none;padding:16px 36px;font-size:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;cursor:pointer;font-family:var(--sans);transition:all 0.2s;width:100%;margin-top:8px;min-height:48px;display:flex;align-items:center;justify-content:center}
+.btn-submit:hover{background:var(--teal-dark);transform:translateY(-1px)}
+.form-note{font-size:13px;color:var(--text-light);margin-top:12px;line-height:1.6}
+footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:70px 40px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;padding-bottom:52px;border-bottom:1px solid rgba(0,169,157,0.2);margin-bottom:32px}
+.footer-brand p{font-size:15px;line-height:1.75;font-weight:300;max-width:260px;margin-top:16px}
+.footer-col h5{font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:18px;font-weight:600}
+.footer-col ul{list-style:none}.footer-col ul li{margin-bottom:12px}
+.footer-col ul li a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:15px;font-weight:300;transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--teal-mid)}
+.footer-contact p{font-size:15px;font-weight:300;line-height:2}
+.footer-contact a{color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s}
+.footer-contact a:hover{color:var(--teal-mid)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:14px;color:rgba(255,255,255,0.3)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(0,169,157,0.3);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);text-decoration:none;transition:all 0.2s}
+.footer-social a:hover{border-color:var(--teal);color:var(--teal-mid)}
+.footer-social svg{width:15px;height:15px;fill:currentColor}
+#mobile-menu{display:none;position:fixed;inset:0;z-index:1100;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:24px;overflow-y:auto}
+#mobile-menu.open{display:flex}
+#mobile-menu a{font-family:var(--serif);font-size:32px;font-weight:300;color:#fff;text-decoration:none;padding:12px 20px;min-height:48px;display:flex;align-items:center}
+#mobile-menu a:hover{color:var(--teal-mid)}
+.mobile-close{position:absolute;top:20px;right:20px;font-size:28px;color:#fff;cursor:pointer;background:none;border:none;width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.mobile-close:hover{color:var(--teal-mid)}
+@media(max-width:900px){#topbar{display:none}.contact-layout{grid-template-columns:1fr;padding:60px 24px}.footer-top{grid-template-columns:1fr 1fr}nav{display:none}.mobile-toggle{display:flex}.form-row{grid-template-columns:1fr}}
+@media(max-width:768px){#topbar{display:none}.header-inner{padding:0 20px;height:90px}nav{display:none!important}.mobile-toggle{display:flex}.page-hero{padding:80px 20px 60px}.page-title{font-size:clamp(32px,5vw,48px)}.contact-layout{grid-template-columns:1fr;gap:40px;padding:60px 20px}.contact-info h2{font-size:clamp(26px,4vw,42px)}.contact-form-wrap{padding:32px}.form-row{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.footer-top{padding-bottom:24px}}
+@media(max-width:480px){#topbar{display:none}.header-inner{padding:0 16px;height:80px}.page-hero{padding:60px 16px 48px}.page-label{font-size:12px}.page-title{font-size:clamp(28px,6vw,40px);line-height:1.2}.page-subtitle{font-size:16px;margin:16px 0 0 0}.contact-layout{padding:40px 16px;gap:24px}.contact-info h2{font-size:clamp(24px,5vw,36px)}.contact-info p{font-size:16px;margin-bottom:20px}.contact-details li{padding:16px 0;font-size:15px}.contact-details li:first-child{border-top:0}.contact-icon{width:40px;height:40px}.contact-icon svg{width:18px;height:18px}.contact-hours{padding:16px 20px;font-size:14px}.contact-form-wrap{padding:24px}.contact-form-wrap h3{font-size:24px;margin-bottom:8px}.contact-form-wrap p{font-size:14px;margin-bottom:20px}.form-group label{font-size:12px}.form-group input,.form-group select,.form-group textarea{padding:12px 14px;font-size:16px}.form-group textarea{height:120px}.form-row{grid-template-columns:1fr;gap:12px}.btn-submit{padding:14px 20px;font-size:14px;min-height:48px}.form-note{font-size:12px}.footer-inner{max-width:100%}.footer-top{grid-template-columns:1fr;gap:20px;padding-bottom:20px}.footer-brand p{max-width:100%}.footer-bottom{flex-direction:column;gap:8px;text-align:center}.footer-col h5{font-size:12px}.footer-social{justify-content:center}}
+@media(max-width:380px){.header-inner{padding:0 12px;height:70px}.page-hero{padding:48px 12px 40px}.page-title{font-size:clamp(24px,6vw,36px)}.page-subtitle{font-size:15px}.contact-layout{padding:32px 12px}.contact-info h2{font-size:clamp(22px,5vw,32px)}.contact-info p{font-size:15px}.contact-form-wrap{padding:20px}.contact-form-wrap h3{font-size:20px}.contact-form-wrap p{font-size:13px}.form-group input,.form-group select,.form-group textarea{padding:10px 12px}.btn-submit{padding:12px 14px;font-size:13px}.form-note{font-size:11px}.footer-top{padding-bottom:16px}footer{padding:40px 12px 16px}}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <div class="topbar-contact">
+    <a href="tel:+34653919871">+34 653 919 871</a>
+    <a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a>
+  </div>
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+  </div>
+</div>
+<header id="main-header">
+  <div class="header-inner">
+    <a href="../"><svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:160px;width:auto;"><text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text><text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text><line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text><text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text><text x="204" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.45)" letter-spacing="5">a  un  click</text><g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.8"/></g></svg></a>
+    <nav><ul>
+      <li><a href="../">Inicio</a></li>
+      <li><a href="../quienes-somos/">Quiénes somos</a></li>
+      <li class="has-sub"><a href="../servicios/">Servicios</a><ul class="sub-menu"><li><a href="../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li><li><a href="../servicios/subvenciones/">Subvenciones</a></li><li><a href="../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li></ul></li>
+      <li><a href="../contacto/" class="nav-cta active">Contactar</a></li>
+    </ul></nav>
+    <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div id="mobile-menu"><button class="mobile-close" id="mobileClose">✕</button><a href="../">Inicio</a><a href="../quienes-somos/">Quiénes somos</a><a href="../servicios/">Servicios</a><a href="../contacto/" style="color:var(--teal-mid)">Contactar →</a></div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Estamos aquí</p>
+    <h1 class="page-title">Hablemos de tu <em>proyecto</em></h1>
+    <p class="page-subtitle">Disponibles de lunes a viernes de 08:00 a 18:00 horas. Cuéntanos qué necesitas y te respondemos en menos de 24h.</p>
+  </div>
+</section>
+
+<div class="contact-layout">
+  <div class="contact-info">
+    <h2>¿Cómo podemos <em>ayudarte?</em></h2>
+    <p>Somos especialistas en subvenciones, consultoría empresarial y sistemas de gestión. Si tienes cualquier duda sobre cómo podemos ayudar a tu empresa, escríbenos o llámanos.</p>
+    <ul class="contact-details">
+      <li>
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.12 6.12l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="contact-detail-text"><strong>Teléfono</strong><a href="tel:+34653919871">+34 653 919 871</a></div>
+      </li>
+      <li>
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="contact-detail-text"><strong>Email</strong><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></div>
+      </li>
+      <li>
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="contact-detail-text"><strong>Ubicación</strong><span style="font-size:17px">Las Palmas de Gran Canaria, Islas Canarias</span></div>
+      </li>
+    </ul>
+    <div class="contact-hours">
+      <strong>Horario de atención</strong>
+      Lunes a viernes: 08:00 – 18:00 h<br/>
+      Respondemos emails en menos de 24 horas laborables.
+    </div>
+  </div>
+  <div class="contact-form-wrap">
+    <h3>Envíanos un mensaje</h3>
+    <p>Te responderemos a la mayor brevedad posible.</p>
+    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+      <div class="form-row">
+        <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/></div>
+        <div class="form-group"><label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa"/></div>
+      </div>
+      <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="tu@email.com" required/></div>
+      <div class="form-group"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000"/></div>
+      <div class="form-group">
+        <label for="servicio">¿En qué podemos ayudarte?</label>
+        <select id="servicio" name="servicio">
+          <option value="">Selecciona un servicio</option>
+          <option value="subvenciones">Ayudas y Subvenciones</option>
+          <option value="consultoria">Consultoría de Empresas</option>
+          <option value="sistemas">Sistemas de Gestión (ISO)</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto o consulta..." required></textarea></div>
+      <button type="submit" class="btn-submit">Enviar mensaje</button>
+      <p class="form-note">Al enviar este formulario aceptas nuestra <a href="../politica-de-privacidad/" style="color:var(--teal)">política de privacidad</a>. Tus datos no serán compartidos con terceros.</p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto;display:block;"><text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text><text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text><line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text><text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text><g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.6"/></g></svg><p>Especialistas en gestión de subvenciones y ayudas para pymes en las Islas Canarias.</p></div>
+      <div class="footer-col"><h5>Servicios</h5><ul><li><a href="../servicios/subvenciones/">Ayudas y Subvenciones</a></li><li><a href="../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li><li><a href="../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li></ul></div>
+      <div class="footer-col"><h5>Empresa</h5><ul><li><a href="../">Inicio</a></li><li><a href="../quienes-somos/">Quiénes somos</a></li><li><a href="../contacto/">Contacto</a></li><li><a href="../politica-de-privacidad/">Política de privacidad</a></li></ul></div>
+      <div class="footer-col footer-contact"><h5>Contacto</h5><p><a href="tel:+34653919871">+34 653 919 871</a><br/><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></p><div class="footer-social" style="margin-top:20px;"><a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 DClick Consultores. Todos los derechos reservados.</p><p>Hecho con ♦ en Las Palmas de Gran Canaria</p></div>
+  </div>
+</footer>
+<script>
+document.getElementById('mobileToggle').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.add('open');document.body.style.overflow='hidden'});
+document.getElementById('mobileClose').addEventListener('click',()=>{document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow=''});
+</script>
+</body></html>

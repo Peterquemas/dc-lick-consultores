@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiénes Somos | DClick Consultores</title>
+  <meta name="description" content="Conoce al equipo de DClick Consultores, especialistas en gestión de subvenciones y ayudas para pymes en Canarias."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #C8963E; --gold-light: #e4b96a;
+      --teal: #00a99d; --teal-dark: #007f75; --teal-deeper: #005f58; --teal-light: #e6f7f6; --teal-mid: #b3e8e5;
+      --dark: #0f2b2a; --dark-mid: #1a3f3d;
+      --bg-light: #f4fbfa; --bg-mid: #e8f5f4; --white: #ffffff;
+      --text-dark: #0f2b2a; --text-mid: #3a5250; --text-light: #6a8a88;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+    /* TOPBAR */
+    #topbar { background: var(--teal-deeper); color: rgba(255,255,255,0.85); font-size: 15px; padding: 10px 40px; display: flex; justify-content: space-between; align-items: center; }
+    #topbar a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
+    #topbar a:hover { color: var(--white); }
+    .topbar-contact { display: flex; gap: 28px; }
+    .topbar-social { display: flex; gap: 10px; }
+    .topbar-social a { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.35); transition: all 0.2s; }
+    .topbar-social a:hover { background: rgba(255,255,255,0.15); }
+    .topbar-social svg { width: 14px; height: 14px; fill: white; }
+
+    /* HEADER */
+    #main-header { position: sticky; top: 0; z-index: 1000; background: rgba(0,95,88,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 130px; }
+    nav ul { list-style: none; display: flex; gap: 4px; }
+    nav ul li a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; padding: 10px 18px; border-radius: 4px; transition: all 0.2s; position: relative; }
+    nav ul li a:hover, nav ul li a.active { color: var(--white); background: rgba(255,255,255,0.1); }
+    .sub-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: var(--teal-deeper); border: 1px solid rgba(255,255,255,0.15); min-width: 260px; flex-direction: column; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+    nav ul li.has-sub { position: relative; }
+    nav ul li.has-sub:hover .sub-menu { display: flex; }
+    .sub-menu li a { display: block; padding: 14px 22px; font-size: 16px; }
+    .nav-cta { background: var(--teal-mid) !important; color: var(--teal-deeper) !important; font-weight: 700 !important; padding: 12px 26px !important; border-radius: 4px !important; }
+    .nav-cta:hover { background: var(--white) !important; }
+    .mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .mobile-toggle span { display: block; width: 26px; height: 2px; background: var(--white); }
+
+    /* PAGE HERO */
+    .page-hero { background: var(--dark); padding: 100px 48px 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--teal-deeper), var(--dark)); opacity: 0.8; }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .page-label { font-size: 14px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 16px; font-weight: 600; }
+    .page-title { font-family: var(--serif); font-size: clamp(42px, 5vw, 68px); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+    .page-title em { font-style: italic; color: var(--teal-mid); }
+    .page-subtitle { font-size: 18px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.7; }
+
+    /* CONTENT */
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 90px 48px; }
+    .section-label { font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; font-weight: 600; }
+    .section-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 300; color: var(--text-dark); margin-bottom: 24px; line-height: 1.15; }
+    .section-title em { font-style: italic; color: var(--teal); }
+    .section-body { font-size: 18px; line-height: 1.8; color: var(--text-mid); font-weight: 300; margin-bottom: 20px; }
+    .section-body strong { color: var(--teal-deeper); font-weight: 600; }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .two-col img { width: 100%; height: 460px; object-fit: cover; border-radius: 6px; }
+
+    /* STORY SECTION */
+    #historia { background: var(--bg-light); }
+    #mision { background: var(--white); }
+
+    /* TEAM CARDS */
+    #equipo { background: var(--bg-light); }
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 60px; max-width: 860px; }
+    .team-card { background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--bg-mid); transition: transform 0.3s, box-shadow 0.3s; }
+    .team-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,169,157,0.15); }
+    .team-photo { width: 100%; height: 320px; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%); transition: filter 0.4s; }
+    .team-card:hover .team-photo { filter: grayscale(0%); }
+    .team-info { padding: 30px; }
+    .team-info h4 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+    .team-role { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; font-weight: 600; }
+    .team-bio { font-size: 16px; color: var(--text-light); line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+    .team-linkedin { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .team-linkedin:hover { color: var(--teal-dark); }
+    .team-linkedin svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* VALORES */
+    #valores-qs { background: var(--dark); color: var(--white); }
+    .valores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; margin-top: 60px; }
+    .valor-box { background: rgba(0,169,157,0.08); padding: 40px 32px; border: 1px solid rgba(0,169,157,0.2); border-radius: 4px; }
+    .valor-num { font-family: var(--serif); font-size: 48px; font-weight: 300; color: rgba(0,169,157,0.3); line-height: 1; margin-bottom: 16px; }
+    .valor-box h4 { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+    .valor-box p { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7; font-weight: 300; }
+    #valores-qs .section-title { color: var(--white); }
+    #valores-qs .section-title em { color: var(--teal-mid); }
+    #valores-qs .section-label { color: var(--teal-mid); }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--teal); padding: 80px 48px; text-align: center; }
+    .cta-strip h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 44px); font-weight: 300; color: var(--white); margin-bottom: 16px; }
+    .cta-strip p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 36px; font-weight: 300; }
+    .btn-white { background: var(--white); color: var(--teal-deeper); text-decoration: none; font-weight: 700; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 36px; border-radius: 4px; transition: all 0.2s; display: inline-block; }
+    .btn-white:hover { background: var(--teal-mid); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 70px 40px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; padding-bottom: 52px; border-bottom: 1px solid rgba(0,169,157,0.2); margin-bottom: 32px; }
+    .footer-brand p { font-size: 15px; line-height: 1.75; font-weight: 300; max-width: 260px; margin-top: 16px; }
+    .footer-col h5 { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 18px; font-weight: 600; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 15px; font-weight: 300; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--teal-mid); }
+    .footer-contact p { font-size: 15px; font-weight: 300; line-height: 2; }
+    .footer-contact a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--teal-mid); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 14px; color: rgba(255,255,255,0.3); }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(0,169,157,0.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; transition: all 0.2s; }
+    .footer-social a:hover { border-color: var(--teal); color: var(--teal-mid); }
+    .footer-social svg { width: 15px; height: 15px; fill: currentColor; }
+
+    /* MOBILE */
+    #mobile-menu { display: none; position: fixed; inset: 0; z-index: 1100; background: var(--dark); flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--white); text-decoration: none; }
+    #mobile-menu a:hover { color: var(--gold); }
+    .mobile-close { position: absolute; top: 24px; right: 32px; font-size: 28px; color: var(--white); cursor: pointer; background: none; border: none; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    @media (max-width: 900px) {
+      #topbar { display: none; }
+      .two-col { grid-template-columns: 1fr; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      .mobile-toggle { display: flex; }
+      .section-inner { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <div class="topbar-contact">
+    <a href="tel:+34653919871">+34 653 919 871</a>
+    <a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a>
+  </div>
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="main-header">
+  <div class="header-inner">
+    <a href="../" aria-label="DClick Consultores - Inicio">
+      <svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:160px;width:auto;">
+        <text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text>
+        <text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text>
+        <line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text>
+        <text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text>
+        <text x="204" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="300" fill="rgba(255,255,255,0.45)" letter-spacing="5">a  un  click</text>
+        <g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.8"/></g>
+      </svg>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="../">Inicio</a></li>
+        <li><a href="../quienes-somos/" class="active">Quiénes somos</a></li>
+        <li class="has-sub">
+          <a href="../servicios/">Servicios</a>
+          <ul class="sub-menu">
+            <li><a href="../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li>
+            <li><a href="../servicios/subvenciones/">Subvenciones</a></li>
+            <li><a href="../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li>
+          </ul>
+        </li>
+        <li><a href="../contacto/" class="nav-cta">Contactar</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div id="mobile-menu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="../">Inicio</a>
+  <a href="../quienes-somos/">Quiénes somos</a>
+  <a href="../servicios/">Servicios</a>
+  <a href="../servicios/subvenciones/">Subvenciones</a>
+  <a href="../contacto/" style="color:var(--teal-mid)">Contactar →</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-label">Nuestra historia</p>
+    <h1 class="page-title">Quiénes <em>somos</em></h1>
+    <p class="page-subtitle">Dos ingenieras industriales con más de 10 años de experiencia ayudando a pymes canarias a crecer con las herramientas que merecen.</p>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section id="historia">
+  <div class="section-inner">
+    <div class="two-col">
+      <div class="reveal">
+        <img src="https://dclickconsultores.com/wp-content/uploads/2023/05/clickdistanceed-scaled-1.webp" alt="Oficina DClick Consultores" loading="lazy"/>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="section-label">Nuestros orígenes</p>
+        <h2 class="section-title">Accesibles <em>a un Click</em></h2>
+        <p class="section-body">En la era de la conectividad global en la que nos encontramos tenemos casi todo al alcance de nuestra mano con un solo click. De esa idea nace <strong>DClick Consultores</strong>, inspiradas por nuestro propósito de ayudar y asesorar a las empresas, sobre todo a esas pymes que están sumergidas en los proyectos empresariales durante su día a día.</p>
+        <p class="section-body">Por ello nace Consultores a un Click, con el propósito de ayudar a todas estas pymes, asesorándoles sobre cómo innovar en sus negocios, cómo conseguir financiación pública o cómo internacionalizar sus productos o servicios. En definitiva, ayudamos a las empresas a llevar a cabo sus proyectos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN -->
+<section id="mision">
+  <div class="section-inner">
+    <div class="two-col" style="direction: rtl;">
+      <div class="reveal" style="direction: ltr;">
+        <p class="section-label">Nuestra misión</p>
+        <h2 class="section-title">Especializadas en lo que <em>importa</em></h2>
+        <p class="section-body">Somos una empresa de servicios de consultoría, especializada en la tramitación y gestión de ayudas y subvenciones, implantación de normas internacionales y gestión empresarial.</p>
+        <p class="section-body">Hemos participado en distintos sectores en todos los niveles: como becarias en nuestros inicios, como responsables diseñando y ejecutando proyectos, como consultoras de empresas externas y como comerciales atendiendo las necesidades de los clientes. Ello nos da una perspectiva completa e integral de la gestión de las empresas.</p>
+        <p class="section-body">Lo que nos motiva e inspira diariamente a crecer es buscar la <strong>excelencia en nuestro trabajo</strong>. Nos involucramos de lleno en el proyecto empresarial de cada cliente.</p>
+      </div>
+      <div class="reveal reveal-delay-1" style="direction: ltr;">
+        <img src="../MANO4.png" alt="Abriendo camino entre la burocracia" loading="lazy" style="border-radius:6px;width:100%;height:460px;object-fit:cover;"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section id="valores-qs">
+  <div class="section-inner">
+    <p class="section-label reveal">Nuestros valores</p>
+    <h2 class="section-title reveal reveal-delay-1">Lo que nos <em>define</em></h2>
+    <div class="valores-grid">
+      <div class="valor-box reveal reveal-delay-1">
+        <div class="valor-num">01</div>
+        <h4>Excelencia</h4>
+        <p>Marcamos un alto nivel de auto-exigencia, dedicamos tiempo e interés, involucrándonos de lleno en cada proyecto empresarial.</p>
+      </div>
+      <div class="valor-box reveal reveal-delay-2">
+        <div class="valor-num">02</div>
+        <h4>Tecnología</h4>
+        <p>Somos apasionadas de las tecnologías. Gracias a ellas, resolvemos los problemas de las empresas de la manera más efectiva, rápida y eficiente.</p>
+      </div>
+      <div class="valor-box reveal">
+        <div class="valor-num">03</div>
+        <h4>Experiencia</h4>
+        <p>Más de 10 años trabajando en múltiples sectores nos otorgan una perspectiva completa e integral de la gestión empresarial.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="section-inner">
+    <p class="section-label reveal">Nuestro equipo</p>
+    <h2 class="section-title reveal reveal-delay-1">Las personas detrás de <em>DClick</em></h2>
+    <div class="team-grid">
+      <article class="team-card reveal reveal-delay-1">
+        <img src="https://dclickconsultores.com/wp-content/uploads/2023/05/Divi-BW2.webp" alt="Divi Daswani" class="team-photo" loading="lazy"/>
+        <div class="team-info">
+          <h4>Divi Daswani</h4>
+          <p class="team-role">CEO &amp; Consultora</p>
+          <p class="team-bio">Licenciada en Ingeniería Industrial. Comenzó como becaria en Binter Technic, trabajó en el estudio de ingeniería Se2in y como Directora de proyectos tecnológicos en intraHouse Spain (empresa noruega). Apasionada de la consultoría y la gestión empresarial.</p>
+          <a href="https://www.linkedin.com/in/divya-ram-kishinchand-daswani-66973463/" class="team-linkedin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </article>
+      <article class="team-card reveal reveal-delay-2">
+        <img src="https://dclickconsultores.com/wp-content/uploads/2025/12/Foto-web-1.jpg" alt="María García-Almonacid" class="team-photo" loading="lazy"/>
+        <div class="team-info">
+          <h4>María García-Almonacid</h4>
+          <p class="team-role">Consultora</p>
+          <p class="team-bio">Licenciada en Ingeniería Industrial. Comenzó en ASTICAN en el departamento de Calidad e I+D+i. Ha trabajado en sectores aeronáutico, transporte monetario, seguridad y construcción. Especializada en cumplimiento normativo y mejora de procesos.</p>
+          <a href="https://www.linkedin.com/in/mar%C3%ADagarc%C3%ADa-almonacid/" class="team-linkedin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>¿Hablamos sobre tu proyecto?</h2>
+  <p>Cuéntanos qué necesitas y encontramos la mejor solución para tu empresa.</p>
+  <a href="../contacto/" class="btn-white">Contactar ahora</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 690 230" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto;display:block;">
+          <text x="48" y="145" font-family="Georgia, serif" font-size="112" font-weight="700" fill="#C8963E">D</text>
+          <text x="106" y="145" font-family="Georgia, serif" font-size="112" font-weight="400" fill="#ffffff">C</text>
+          <line x1="192" y1="48" x2="192" y2="172" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <text x="204" y="108" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#C8963E" letter-spacing="1">lick</text>
+          <text x="202" y="158" font-family="Georgia, serif" font-size="44" font-weight="400" fill="#ffffff" letter-spacing="0.5">Consultores</text>
+          <g transform="translate(350, 174)"><polygon points="0,0 0,18 5,13 8,21 10,20 7,12 13,12" fill="#C8963E" opacity="0.6"/></g>
+        </svg>
+        <p>Especialistas en gestión de subvenciones y ayudas para pymes en las Islas Canarias.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="../servicios/subvenciones/">Ayudas y Subvenciones</a></li>
+          <li><a href="../servicios/consultoria-de-empresa/">Consultoría de Empresas</a></li>
+          <li><a href="../servicios/sistemas-de-gestion/">Sistemas de Gestión</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="../">Inicio</a></li>
+          <li><a href="../quienes-somos/">Quiénes somos</a></li>
+          <li><a href="../contacto/">Contacto</a></li>
+          <li><a href="../politica-de-privacidad/">Política de privacidad</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h5>Contacto</h5>
+        <p><a href="tel:+34653919871">+34 653 919 871</a><br/><a href="mailto:info@dclickconsultores.com">info@dclickconsultores.com</a></p>
+        <div class="footer-social" style="margin-top:20px;">
+          <a href="https://www.facebook.com/DClick-Consultores-103099184802879/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/dclickconsultores/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DClick Consultores. Todos los derechos reservados.</p>
+      <p>Hecho con ♦ en Las Palmas de Gran Canaria</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('mobileClose').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
