@@ -61,7 +61,8 @@
     '#main-header nav a',
     '#mobile-menu a',
     '#topbar a',
-    '#clientes a.cliente-item'
+    '#clientes a.cliente-item',
+    '#cookie-bar .cookie-policy-link'
   ].join(',');
 
   document.addEventListener('click', function (e) {
